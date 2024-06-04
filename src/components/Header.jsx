@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const [cards, setCards] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [nextUrl, setNextUrl] = useState();
-  const [prevUrl, setPrevUrl] = useState();
 
   useEffect(() => {
     axios
@@ -15,9 +13,6 @@ export default function Header() {
         const cards = res.data.data.slice(0, 70);
         setCards(cards);
         console.log(cards);
-        console.log(res.data.data);
-
-        setPrevUrl(res.data.previous);
       })
       .catch((error) => {
         console.error("Error fetching card data:", error);
